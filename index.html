@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aarush Kumar Singh Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout idea: one calm editorial column; navy ink on cool paper, saffron used only for numbers and links. */
+  :root {
+    --ink: #17233f;
+    --ink-soft: #46506a;
+    --paper: #f5f7fb;
+    --card: #ffffff;
+    --line: #dde2ee;
+    --accent: #c77700;
+    --accent-bg: #fdf1dc;
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a { color: var(--ink); text-underline-offset: 3px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0; }
+
+  /* Top bar */
+  .bar { border-bottom: 1px solid var(--line); background: var(--card); }
+  .bar .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
+  .bar strong { font-family: var(--font-display); font-size: 1.15rem; }
+  .bar nav { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 0.95rem; }
+  .bar nav a { text-decoration: none; color: var(--ink-soft); }
+  .bar nav a:hover { color: var(--ink); text-decoration: underline; }
+
+  /* Hero */
+  .hero { padding: 64px 0 48px; }
+  .hello { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--accent); margin: 0 0 8px; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); letter-spacing: -0.01em; }
+  .hero .lede { max-width: 34em; font-size: 1.2rem; color: var(--ink-soft); margin: 18px 0 28px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 11px 20px; border-radius: 8px; border: 1.5px solid var(--ink); font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn:hover { opacity: 0.88; }
+  .meta { margin: 18px 0 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* Sections */
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  .label { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); margin: 0 0 6px; }
+  section > .wrap > h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 22px; }
+
+  .about { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 40em; }
+  .about p { margin: 0; }
+
+  /* Projects */
+  .projects { display: flex; flex-direction: column; gap: 28px; }
+  .project { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
+  .project header { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+  .project h3 { font-size: 1.6rem; }
+  .tag { font-size: 0.85rem; color: var(--ink-soft); }
+  .tagline { margin: 0 0 20px; color: var(--ink-soft); }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 32px; }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } }
+  .facts h4 { margin: 0 0 4px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+  .facts p { margin: 0; font-size: 0.97rem; }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
+  .stats li { background: var(--accent-bg); border-radius: 8px; padding: 10px 16px; min-width: 130px; }
+  .stats b { display: block; font-family: var(--font-display); font-size: 1.6rem; color: var(--accent); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stats span { font-size: 0.85rem; color: var(--ink-soft); }
+  .insights { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--paper); border-radius: 0 8px 8px 0; }
+  .insights h4 { margin: 0 0 6px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+  .insights ul { margin: 0; padding-left: 1.1em; font-size: 0.97rem; }
+  .insights li + li { margin-top: 4px; }
+  .link-row { margin: 22px 0 0; font-size: 0.95rem; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .skills h3 { font-size: 1.15rem; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 8px; list-style: none; }
+  .chips li { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 12px; font-size: 0.9rem; }
+  .skills p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* Contact */
+  .contact { background: var(--ink); color: #fff; border-top: 0; }
+  .contact .label { color: #b9c2d9; }
+  .contact a { color: #fff; }
+  .contact dl { display: grid; grid-template-columns: max-content 1fr; gap: 10px 24px; margin: 0 0 22px; }
+  .contact dt { color: #b9c2d9; }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
+  .contact .btn.primary { background: #fff; color: var(--ink); border-color: #fff; }
+  .contact .btn.ghost { color: #fff; border-color: #fff; }
+  footer { padding: 18px 0 28px; font-size: 0.85rem; color: var(--ink-soft); }
+  .contact + footer { background: var(--paper); }
+
+  @media (max-width: 520px) {
+    body { font-size: 16px; }
+    .hero { padding: 40px 0 32px; }
+    .project { padding: 20px; }
+    .contact dl { grid-template-columns: 1fr; gap: 2px; }
+    .contact dd { margin-bottom: 10px; }
+  }
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { font-size: 11.5px; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .bar nav { display: none; }
+    .hero { padding: 24px 0 20px; }
+    section { padding: 22px 0; }
+    #work { border-top: 0; }
+    #work .label, #work h2, #skills .label, #skills h2 { break-after: avoid; }
+    #work .wrap > h2 { margin-bottom: 14px; }
+    #skills, .contact { break-inside: avoid; }
+    .projects { gap: 16px; }
+    .project { break-inside: avoid; padding: 16px 18px; }
+    .project h3 { font-size: 1.3rem; }
+    .stats { margin-top: 12px; }
+    .insights { break-inside: avoid; margin-top: 14px; }
+    .facts { gap: 12px 28px; }
+    .actions { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <strong>Aarush Kumar Singh</strong>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hello">Hi, I&rsquo;m Aarush.</p>
+    <h1>Aarush Kumar Singh</h1>
+    <p class="lede">I learn by taking things apart: how a founder persuades, how a start-up earns its keep, and how a few hours of service can matter to the person on the other side.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:aarushjnov@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/aarush-kumar-singh-880a76421/">LinkedIn profile</a>
+    </div>
+    <p class="meta">BBA-DBE student at Indian Institute of Management Bangalore (IIM Bangalore), Bengaluru &middot; Batch 2026&ndash;29</p>
+    <p class="meta">aarushjnov@gmail.com &nbsp;&middot;&nbsp; 9282820174</p>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <p class="label">About me</p>
+    <h2>A student who likes to see how things work</h2>
+    <div class="about">
+      <p>Hi, I&rsquo;m Aarush, a first-year BBA-DBE student at IIM Bangalore in Bengaluru (batch 2026&ndash;29). I like work that sits between people and ideas: reading how someone speaks and asking why it lands, then turning numbers and observations into something others can use.</p>
+      <p>In my first semester that meant analysing the public voice of a well-known Indian founder, pitching an AI product for actuaries, finding the break-even point of IndiGo, simulating a year of accounts for Bharat Electronics, and representing my school on a community service visit to an old age home. All but the last were group projects with five teammates, and each taught me something different about how to ask a better question before I look for the answer.</p>
+      <p>I am looking for chances to keep learning in business, finance and communication, and to work with people who care about getting the details right.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="label">Selected work</p>
+    <h2>Five pieces I am proud of</h2>
+
+    <div class="projects">
+
+      <article class="project">
+        <header>
+          <h3>Rhetorical analysis and rebrand of Vijay Shekhar Sharma</h3>
+          <span class="tag">Team of six &middot; Communication</span>
+        </header>
+        <p class="tagline">How does one founder speak to investors, students and the public, and what would a stronger personal brand look like?</p>
+        <div class="facts">
+          <div>
+            <h4>The brief</h4>
+            <p>Study eight texts across four audiences (stage talks, social posts, results and video or podcast) and propose a rebrand.</p>
+          </div>
+          <div>
+            <h4>My role</h4>
+            <p>I presented the pathos section: how he uses body words, &ldquo;you&rdquo; and &ldquo;yaar&rdquo;, and the bicycle metaphor to make a regulatory setback feel like a scrape. I also showed where the same casual tone backfired in his Ratan Tata post, which drew criticism and was deleted.</p>
+          </div>
+          <div>
+            <h4>Methods</h4>
+            <p>SOAPS (subject, occasion, audience, purpose, speaker) and the ethos, pathos and logos framework, with sources cited for every text.</p>
+          </div>
+          <div>
+            <h4>Outcome</h4>
+            <p>We found that he has no personal brand of his own. His credibility is borrowed from Paytm and from others. We proposed six strategies to move him from survivor to builder: keep the warmth, add the proof.</p>
+          </div>
+        </div>
+        <ul class="stats">
+          <li><b>8</b><span>texts analysed</span></li>
+          <li><b>4</b><span>audiences compared</span></li>
+          <li><b>6</b><span>rebrand strategies</span></li>
+          <li><b>18 of 20</b><span>latest LinkedIn posts were reposts</span></li>
+        </ul>
+        <div class="insights">
+          <h4>Insights I gained</h4>
+          <ul>
+            <li>Emotion persuades fast, but proof is what makes a speaker believable. The warmth in his speeches needed numbers behind it.</li>
+            <li>One tone cannot fit every audience. The casual style that worked on stage hurt him on a tribute post, so context decides what is appropriate.</li>
+            <li>Building a personal brand takes more than visibility. A big following means little if the ideas are not clearly his own.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3>Vortex ActuaryOS</h3>
+          <span class="tag">Team pitch &middot; Business and technology</span>
+        </header>
+        <p class="tagline">An AI operating system that takes over the routine work around an actuary&rsquo;s judgment.</p>
+        <div class="facts">
+          <div>
+            <h4>The problem</h4>
+            <p>Actuaries spend large parts of their time collecting, cleaning, validating and reporting data before any real judgment begins.</p>
+          </div>
+          <div>
+            <h4>The idea</h4>
+            <p>AI agents run five operational layers (data ingestion, validation, analysis, insight and human decision) so the actuary does one expert review instead.</p>
+          </div>
+          <div>
+            <h4>My role</h4>
+            <p>Member of the team behind the idea and the pitch, which covered the market case, pricing and an 18-month roadmap.</p>
+          </div>
+          <div>
+            <h4>Why it holds up</h4>
+            <p>We chose insurance over law and healthcare on purpose. Studies show AI errors are costly in those fields, while an actuary can review the output before anything is acted on.</p>
+          </div>
+        </div>
+        <ul class="stats">
+          <li><b>5 &rarr; 1</b><span>layers to one expert review</span></li>
+          <li><b>17%+</b><span>legal AI hallucination rate we designed around</span></li>
+          <li><b>₹12&ndash;15L</b><span>starting plan per team, per year</span></li>
+          <li><b>3&times;+</b><span>ROI multiple for a mid-market insurer</span></li>
+        </ul>
+                <div class="insights">
+          <h4>Insights I gained</h4>
+          <ul>
+            <li>A strong idea needs a clear reason to exist. Choosing insurance over law and healthcare was a business decision, not just a technical one.</li>
+            <li>Pricing is a story about value. Showing the time and cost an actuary saves made the price easier to justify than the product features did.</li>
+            <li>Plans are assumptions until a customer tests them. Our revenue figures are planning numbers, and the real learning would start with the first paying client.</li>
+          </ul>
+        </div>
+<p class="link-row"><a href="https://actuary-os-woad.vercel.app/">View the working prototype</a></p>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3>Break-even analysis of IndiGo</h3>
+          <span class="tag">Team of six &middot; Business Mathematics</span>
+        </header>
+        <p class="tagline">How many passengers does India&rsquo;s largest airline need to carry before it stops losing money?</p>
+        <div class="facts">
+          <div>
+            <h4>The brief</h4>
+            <p>Use linear functions and IndiGo&rsquo;s real FY2025&ndash;26 results to find its break-even point and see how it moves when fares, fuel or fixed costs change.</p>
+          </div>
+          <div>
+            <h4>My role</h4>
+            <p>Member of the six-person group that split costs into fixed and variable, built the revenue and cost functions, and wrote the report.</p>
+          </div>
+          <div>
+            <h4>Methods</h4>
+            <p>Revenue R(q) = p &times; q and cost C(q) = F + v &times; q, solved for the point where they meet. Scenario tests changed one input at a time.</p>
+          </div>
+          <div>
+            <h4>Outcome</h4>
+            <p>IndiGo needs about 110.1 million passengers to break even and carried 123.4 million, a margin of safety of 10.8%. A 10% rise in fuel prices alone cuts that margin to 4.6%.</p>
+          </div>
+        </div>
+        <ul class="stats">
+          <li><b>110.1M</b><span>break-even passengers</span></li>
+          <li><b>10.8%</b><span>margin of safety</span></li>
+          <li><b>84.4%</b><span>actual load factor, against about 75% needed</span></li>
+          <li><b>44%</b><span>of costs are fixed</span></li>
+        </ul>
+        <div class="insights">
+          <h4>Insights I gained</h4>
+          <ul>
+            <li>A simple model can explain a large company. Two straight lines were enough to show where an airline&rsquo;s profit begins.</li>
+            <li>Fixed costs shape risk. When so many costs are fixed, a small change in fares or fuel moves the break-even point by millions of passengers.</li>
+            <li>Assumptions have to be stated. Our fixed and variable split was a judgement call, and the report is more honest for saying so.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3>A year of accounts for Bharat Electronics</h3>
+          <span class="tag">Team of six &middot; Basics of Accounting</span>
+        </header>
+        <p class="tagline">Simulating a full accounting year for a listed defence electronics company, from opening balances to final statements.</p>
+        <div class="facts">
+          <div>
+            <h4>The brief</h4>
+            <p>Start from BEL&rsquo;s real 2024&ndash;25 balance sheet, record 30 made-up transactions for 2025&ndash;26, and produce the year-end statements under Ind AS.</p>
+          </div>
+          <div>
+            <h4>My role</h4>
+            <p>Member of the six-person group that recorded the entries, made the year-end adjustments and checked that the statements agreed.</p>
+          </div>
+          <div>
+            <h4>Methods</h4>
+            <p>Journal entries, ledgers, straight-line depreciation, an accrual for unpaid salaries, income tax at BEL&rsquo;s own 24.84% ratio, and a proposed dividend of Rs 0.90 a share.</p>
+          </div>
+          <div>
+            <h4>Outcome</h4>
+            <p>The simulated balance sheet balanced at Rs 43,03,591 lakh, with a profit for the year of Rs 2,37,046 lakh. These are our simulated results, not BEL&rsquo;s real ones.</p>
+          </div>
+        </div>
+        <ul class="stats">
+          <li><b>30</b><span>transactions recorded</span></li>
+          <li><b>Rs 2,37,046 lakh</b><span>simulated profit for the year</span></li>
+          <li><b>Rs 0</b><span>difference between assets and liabilities</span></li>
+        </ul>
+        <div class="insights">
+          <h4>Insights I gained</h4>
+          <ul>
+            <li>Accounting is a system of checks. When the two sides of the balance sheet agree, it is a sign that every entry was recorded properly.</li>
+            <li>Every number needs a basis. We wrote the reason beneath each entry, which made the work easy to review and to correct.</li>
+            <li>Real statements show how a business behaves. Working from BEL&rsquo;s own figures showed me what a company with no borrowings looks like, and why that matters.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3>Community service at an old age home</h3>
+          <span class="tag">Service &middot; Representing my school</span>
+        </header>
+        <p class="tagline">Giving time to people outside my usual circle.</p>
+        <div class="facts">
+          <div>
+            <h4>The context</h4>
+            <p>A community service visit to an old age home, organised through my school.</p>
+          </div>
+          <div>
+            <h4>My role</h4>
+            <p>I represented my school, which meant showing up prepared and treating the residents with patience and respect.</p>
+          </div>
+          <div>
+            <h4>What it shows</h4>
+            <p>That I take responsibility when I speak for a group, and that the people who benefit from an effort matter more to me than the credit for it.</p>
+          </div>
+        </div>
+
+        <div class="insights">
+          <h4>Insights I gained</h4>
+          <ul>
+            <li>Service is about listening more than doing. Time and attention mattered more than any plan we brought.</li>
+            <li>Representing a group is a responsibility. How I behaved reflected on my school and on the people who sent me.</li>
+            <li>It put my other projects in perspective. Numbers and analysis matter, but they are meant to serve real people.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="label">Skills</p>
+    <h2>What I bring, and where it shows</h2>
+    <div class="skills">
+      <div>
+        <h3>Analysis and research</h3>
+        <ul class="chips">
+          <li>Rhetorical analysis</li>
+          <li>Source evaluation</li>
+          <li>Scenario testing</li>
+          <li>Market comparison</li>
+        </ul>
+        <p>Shown in the Vijay Shekhar Sharma analysis and the Vortex market case.</p>
+      </div>
+      <div>
+        <h3>Communication</h3>
+        <ul class="chips">
+          <li>Presenting</li>
+          <li>Storytelling</li>
+          <li>Slide design</li>
+        </ul>
+        <p>Presented my section to a live audience; built decks for both projects.</p>
+      </div>
+      <div>
+        <h3>Business thinking</h3>
+        <ul class="chips">
+          <li>Break-even analysis</li>
+          <li>Financial statements</li>
+          <li>Pricing and ROI</li>
+          <li>Roadmapping</li>
+        </ul>
+        <p>Shown in the IndiGo break-even report, the BEL accounting simulation and the Vortex pitch.</p>
+      </div>
+      <div>
+        <h3>Working with people</h3>
+        <ul class="chips">
+          <li>Teamwork</li>
+          <li>Empathy</li>
+          <li>Responsibility</li>
+        </ul>
+        <p>Worked in a team of six on four projects; school representative on the service visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="label">Contact and resume</p>
+    <h2>Let&rsquo;s talk</h2>
+    <dl>
+      <dt>Email</dt><dd><a href="mailto:aarushjnov@gmail.com">aarushjnov@gmail.com</a></dd>
+      <dt>Phone</dt><dd>9282820174</dd>
+      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/aarush-kumar-singh-880a76421/">linkedin.com/in/aarush-kumar-singh-880a76421</a></dd>
+      <dt>Resume</dt><dd>Available on request</dd>
+    </dl>
+    <div class="actions">
+      <a class="btn primary" href="mailto:aarushjnov@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/aarush-kumar-singh-880a76421/">Open LinkedIn</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Aarush Kumar Singh &middot; Digital portfolio &middot; Updated November 2026</div>
+</footer>
+
+</body>
+</html>
